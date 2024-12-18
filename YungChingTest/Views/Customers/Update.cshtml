@@ -1,0 +1,95 @@
+﻿@model Models.Customers
+
+@{
+    ViewData["Title"] = "Update Customer";
+}
+
+<h2>Update Customer</h2>
+
+<form method="get" asp-action="Search">
+    <div class="form-group">
+        <label for="searchCustomerID" class="control-label">Search by Customer ID</label>
+        <input type="text" name="customerID" id="searchCustomerID" class="form-control" placeholder="Enter Customer ID" />
+    </div>
+    <div class="form-group">
+        <button type="submit" class="btn btn-secondary">Search</button>
+    </div>
+</form>
+
+@if (ViewBag.Customer != null)
+{
+    <form method="post" asp-action="Update">
+        <div class="form-group">
+            <label asp-for="CustomerID" class="control-label"></label>
+            <input asp-for="CustomerID" class="form-control" readonly />
+        </div>
+
+        <div class="form-group">
+            <label asp-for="CompanyName" class="control-label"></label>
+            <input asp-for="CompanyName" class="form-control" value="@ViewBag.Customer.CompanyName" />
+            <span asp-validation-for="CompanyName" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="ContactName" class="control-label"></label>
+            <input asp-for="ContactName" class="form-control" value="@ViewBag.Customer.ContactName" />
+            <span asp-validation-for="ContactName" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="ContactTitle" class="control-label"></label>
+            <input asp-for="ContactTitle" class="form-control" value="@ViewBag.Customer.ContactTitle" />
+            <span asp-validation-for="ContactTitle" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Address" class="control-label"></label>
+            <input asp-for="Address" class="form-control" value="@ViewBag.Customer.Address" />
+            <span asp-validation-for="Address" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="City" class="control-label"></label>
+            <input asp-for="City" class="form-control" value="@ViewBag.Customer.City" />
+            <span asp-validation-for="City" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Region" class="control-label"></label>
+            <input asp-for="Region" class="form-control" value="@ViewBag.Customer.Region" />
+            <span asp-validation-for="Region" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="PostalCode" class="control-label"></label>
+            <input asp-for="PostalCode" class="form-control" value="@ViewBag.Customer.PostalCode" />
+            <span asp-validation-for="PostalCode" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Country" class="control-label"></label>
+            <input asp-for="Country" class="form-control" value="@ViewBag.Customer.Country" />
+            <span asp-validation-for="Country" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Phone" class="control-label"></label>
+            <input asp-for="Phone" class="form-control" value="@ViewBag.Customer.Phone" />
+            <span asp-validation-for="Phone" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Fax" class="control-label"></label>
+            <input asp-for="Fax" class="form-control" value="@ViewBag.Customer.Fax" />
+            <span asp-validation-for="Fax" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <button type="submit" class="btn btn-primary">Update Customer</button>
+        </div>
+    </form>
+}
+else if (ViewBag.SearchPerformed != null && ViewBag.SearchPerformed)
+{
+    <div class="alert alert-danger">No customer found with the provided CustomerID.</div>
+}
