@@ -1,0 +1,71 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Customers</h1>
+    <p>Manage your customers below.</p>
+
+    <!-- 顯示 Customers 資料 -->
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Customer ID</th>
+                <th>Company Name</th>
+                <th>Contact Name</th>
+                <th>Contact Title</th>
+                <th>Country</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+@*             @foreach (var customer in Model)
+            {
+                <tr>
+                    <td>@customer.CustomerId</td>
+                    <td>@customer.CompanyName</td>
+                    <td>@customer.ContactName</td>
+                    <td>@customer.ContactTitle</td>
+                    <td>@customer.Country</td>
+                    <td>
+                        <!-- 修改 按鈕 -->
+                        <form method="post" asp-action="EditCustomer">
+                            <input type="hidden" name="CustomerId" value="@customer.CustomerId" />
+                            <input type="submit" value="Edit" class="btn btn-warning" />
+                        </form>
+
+                        <!-- 刪除 按鈕 -->
+                        <form method="post" asp-action="DeleteCustomer">
+                            <input type="hidden" name="id" value="@customer.CustomerId" />
+                            <input type="submit" value="Delete" class="btn btn-danger" />
+                        </form>
+                    </td>
+                </tr>
+            } *@
+        </tbody>
+    </table>
+
+    <!-- 新增Customer 表單 -->
+    <h3>Add New Customer</h3>
+    <form method="post" asp-action="AddCustomer">
+        <div>
+            <label>Company Name</label>
+            <input type="text" name="CompanyName" class="form-control" required />
+        </div>
+        <div>
+            <label>Contact Name</label>
+            <input type="text" name="ContactName" class="form-control" required />
+        </div>
+        <div>
+            <label>Contact Title</label>
+            <input type="text" name="ContactTitle" class="form-control" required />
+        </div>
+        <div>
+            <label>Country</label>
+            <input type="text" name="Country" class="form-control" required />
+        </div>
+        <div>
+            <button type="submit" class="btn btn-success">Add Customer</button>
+        </div>
+    </form>
+</div>
